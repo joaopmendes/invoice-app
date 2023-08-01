@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { ClerkProvider } from '@clerk/nextjs'        
 
+
+import {ClerkProvider} from "@/providers/ClerkProvider";
 import './globals.css'
-import {dark} from "@clerk/themes";
 
 export const metadata: Metadata = {
   title: 'Invoice App',
@@ -15,9 +15,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-      <ClerkProvider appearance={
-          {baseTheme: dark}
-      }>
+      <ClerkProvider >
         <html lang="en">
         <body>{children}</body>
         </html>
