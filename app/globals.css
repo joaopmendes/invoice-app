@@ -1,27 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+ 
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+ 
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+ 
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+ 
+    --ring: 0 0% 63.9%;
+ 
+    --radius: 0.5rem;
+
+    /* Color Pallete */
+    --light-blue: #7E88C3;
+    --dark-blue: #7C5DFA;
+    --blue: #9277FF;
+    --dark-01: #1E2139;
+    --dark-02: #252945;
+    --dark-03: #0C0E16;
+    --light-grey: #DFE3FA;
+    --dark-grey: #888EB0;
+    --red: #EC5757;
+    --light-red: #EC5757;
+    --white: #F8F8F8;
+    --dark: #141625;
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+ 
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'League Spartan', sans-serif;
+  }
 }
