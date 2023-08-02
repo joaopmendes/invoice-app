@@ -5,7 +5,8 @@ type Tag =
     "h4" |
     "h5" |
     "h6" |
-    "p"
+    "p"  |
+    "label"
 
 
 export const TagMapping: Record<Tag, string> = {
@@ -16,6 +17,8 @@ export const TagMapping: Record<Tag, string> = {
     h5: 'h5',
     h6: 'h6',
     p: 'p',
+    label: "label",
+    
 }
 
 

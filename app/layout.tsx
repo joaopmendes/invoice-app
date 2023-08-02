@@ -3,6 +3,8 @@ import './favicon.ico'
 
 import {ClerkProvider} from "@/providers/ClerkProvider";
 import './globals.scss'
+import React from "react";
+import ModalsProvider from "@/providers/ModalsProvider";
 
 export const metadata: Metadata = {
     title: 'Invoice App',
@@ -18,6 +20,7 @@ export default function RootLayout({
         <ClerkProvider>
             <html lang="en">
             <body>
+            <ModalsProvider />
             {children}
             </body>
             </html>

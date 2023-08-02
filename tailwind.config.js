@@ -57,6 +57,7 @@ module.exports = {
             "red": "var(--red)",
             "light-red": "var(--light-red)",
             "white": "var(--white)",
+            "pure-white": "#FFFFFF",
             "dark": "var(--dark)",
         },
         extend: {
