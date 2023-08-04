@@ -12,7 +12,7 @@ const buttonVariants = cva(
                 default: "relative bg-dark-blue text-pure-white hover:bg-blue rounded-3xl",
                 destruction: "relative bg-red text-pure-white hover:bg-light-red rounded-3xl",
                 light:
-                    "bg-[#F9FAFE] hover:bg-light-grey text-dark-blue rounded-3xl",
+                    "bg-[#F9FAFE] hover:bg-light-grey text-dark-blue rounded-3xl dark:bg-[#252945] dark:text-white",
                 secondary:
                     "relative bg-dark-02 text-white hover:opacity-80 rounded-3xl",
                 outline:

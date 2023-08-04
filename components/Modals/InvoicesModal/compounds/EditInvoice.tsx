@@ -96,7 +96,7 @@ const EditInvoice: React.FC<EditInvoiceProps> = ({invoice}) => {
 
                                     <InvoiceItemList itemListControl={itemListControl} form={form}/>
 
-                                    <div className="sticky py-10 bottom-0 left-0 bg-pure-white flex justify-between w-full gap-3">
+                                    <div className="sticky py-10 bottom-0 left-0 bg-pure-white flex justify-between w-full gap-3 bottom-[80px] desktop:bottom-[0px] dark:bg-[#141625]">
 
                                         <Button variant={'ghost'} className={'justify-self-start'} type={'button'} onClick={() => invoicesModalStore.closeInvoicesModal()}>
                                             <Typography tag={"span"} color={"dark-grey"} size={"heading-s"}>

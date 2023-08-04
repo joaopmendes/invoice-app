@@ -9,7 +9,7 @@ import invoicesModalStore from "@/store/invoicesModalStore";
 const Header = () => {
     return (
         <div className={'flex justify-between'}>
-            <Typography color={'dark-03'} tag={'h1'} size={'heading-l'}>Invoices</Typography>
+            <Typography color={'dark'} tag={'h1'} size={'heading-l'}>Invoices</Typography>
             <Button
                 variant={'default'}    
                 onClick={() => {
@@ -17,7 +17,7 @@ const Header = () => {
                 }
             } >
                 <PlusIconComponent />
-                <Typography color={'pure-white'} tag={'label'} size={'heading-s'} className={'cursor-pointer'}>New Invoice</Typography>
+                New Invoice
             </Button>
         </div>
     );

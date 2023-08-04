@@ -83,7 +83,7 @@ const CreateInvoice = () => {
                                     <InvoiceItemList itemListControl={itemListControl} form={form} />
 
                                    
-                                    <div className="sticky py-10 bottom-0 left-0 bg-pure-white flex justify-between w-full gap-3">
+                                    <div className="sticky py-10 bottom-0 left-0 bg-pure-white flex justify-between w-full gap-3 bottom-[80px] desktop:bottom-[0px] dark:bg-[#141625]">
                                         <div>
                                             <Button variant={'ghost'} className={'justify-self-start'} type={'button'} onClick={() => invoicesModalStore.closeInvoicesModal()}>
                                                 <Typography tag={"span"} color={"dark-grey"} size={"heading-s"}>
@@ -102,7 +102,7 @@ const CreateInvoice = () => {
                                     </div>
                                     
                                     
-                                    <div className="h-20 tablet:h-0"></div>
+                                    <div className="h-20 tablet:h-10"></div>
                                 </form>
                             </Form>
                         </>

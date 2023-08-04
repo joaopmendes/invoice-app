@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({invoice}) => {
                 <InvoiceStatus status={invoice.status} />
             </div>
             
-            <div className={'fixed bottom-0 bg-pure-white w-full left-0 py-4 flex justify-around tablet:py-0 tablet:relative tablet:justify-end tablet:gap-3'}>
+            <div className={'fixed bottom-0 bg-pure-white w-full left-0 py-4 flex justify-around tablet:py-0 tablet:relative tablet:justify-end tablet:gap-3 dark:dark:bg-dark-01'}>
                 <Button variant={'light'} className={'px-6'} onClick={() => invoicesModalStore.openEditInvoice(invoice)}>Edit</Button>
                 <Button variant={"destruction"} className={'px-6'} onClick={() => actions.delete()}>Delete</Button>
                 {invoice.status === 'PENDING' && <Button className={'px-6'} onClick={() => actions.markAsPaid('PAID')}>Mark as Paid</Button>}

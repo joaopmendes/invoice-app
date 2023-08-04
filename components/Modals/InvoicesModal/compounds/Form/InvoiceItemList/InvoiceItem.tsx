@@ -21,7 +21,7 @@ const InvoiceItem: React.FC<InvoiceItemProps> = ({index, form, field, onRemoveCl
     return (
         <div key={field.id} className={'flex flex-wrap tablet:flex-nowrap gap-2'}>
             <FormItem className={'flex-grow w-full  tablet:w-auto'}>
-                <FormLabel smaller className={clsx({[`tablet:hidden`]: index != 0})}>Name</FormLabel>
+                <FormLabel smaller className={clsx({[`tablet:hidden`]: index != 0}, "dark:text-light-blue")}>Name</FormLabel>
                 <FormControl>
                     <Input
                         key={field.id} {...form.register(`itemList.${index}.name` as const, {required: true})} />
@@ -29,7 +29,7 @@ const InvoiceItem: React.FC<InvoiceItemProps> = ({index, form, field, onRemoveCl
                 <FormMessage/>
             </FormItem>
             <FormItem className={'w-[15%] tablet:w-[80px] desktop:w-[48px]'}>
-                <FormLabel smaller className={clsx({[`tablet:hidden`]: index != 0})}>Qty.</FormLabel>
+                <FormLabel smaller className={clsx({[`tablet:hidden`]: index != 0}, "dark:text-light-blue")}>Qty.</FormLabel>
                 <FormControl>
                     <Input key={field.id} 
                            {...form.register(`itemList.${index}.quantity` as const, {
@@ -41,7 +41,7 @@ const InvoiceItem: React.FC<InvoiceItemProps> = ({index, form, field, onRemoveCl
                 <FormMessage/>
             </FormItem>
             <FormItem className={'w-[28%] tablet:w-[100px] desktop:w-[100px]'}>
-                <FormLabel smaller className={clsx({[`tablet:hidden`]: index != 0})}>Price</FormLabel>
+                <FormLabel smaller className={clsx({[`tablet:hidden`]: index != 0}, "dark:text-light-blue")}>Price</FormLabel>
                 <FormControl>
                     <Input key={field.id} {...form.register(`itemList.${index}.price` as const, {
                                 valueAsNumber: true,
@@ -53,7 +53,7 @@ const InvoiceItem: React.FC<InvoiceItemProps> = ({index, form, field, onRemoveCl
             </FormItem>
 
             <FormItem className={'w-[28%] tablet:w-[100px] desktop:w-[100px]'}>
-                <FormLabel smaller className={clsx({[`tablet:hidden`]: index != 0})}>Total</FormLabel>
+                <FormLabel smaller className={clsx({[`tablet:hidden`]: index != 0}, "dark:text-light-blue")}>Total</FormLabel>
                 <FormControl>
                     <Input key={"total_" + index} value={isNaN(total) ? 0 : total} disabled={true}/>
                 </FormControl>
@@ -61,8 +61,7 @@ const InvoiceItem: React.FC<InvoiceItemProps> = ({index, form, field, onRemoveCl
 
             {
                 <div className={'space-y-2 flex justify-center w-auto tablet:w-[85px] flex-col'}>
-                    <FormLabel smaller className={"text-white"}>Actions</FormLabel>
-
+                    <div className="h-4"></div>
                     <div className={'relative w-full'}>
                         <Image alt={"Remove Item"} src={'/assets/icon-delete.svg'} width={13} height={16} onClick={onRemoveClick}/>
                     </div>

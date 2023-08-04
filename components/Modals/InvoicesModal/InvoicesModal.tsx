@@ -18,7 +18,7 @@ export const InvoicesModal: React.FC<ModalProps> = ({ open, close, type, invoice
         <>
            <ModalOverlay close={close}/>
            <div className={clsx({
-               [`fixed top-[80px] left-0 z-20 bg-pure-white w-screen overflow-y-scroll h-full`]: true,
+               [`fixed top-[80px] left-0 z-20 bg-pure-white w-screen overflow-y-scroll h-full dark:bg-[#141625]`]: true,
                [`tablet:rounded-tl-none tablet:rounded-bl-none tablet:w-[617px]`]: true,
                [`desktop:rounded-tl-none desktop:rounded-bl-none desktop:w-[617px] desktop:left-[103px] desktop:top-[0px]`]: true
            })}>

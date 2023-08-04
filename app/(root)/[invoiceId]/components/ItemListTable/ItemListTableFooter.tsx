@@ -7,8 +7,8 @@ type ItemListTableFooterProps = {
 export const ItemListTableFooter: React.FC<ItemListTableFooterProps> = ({invoice}) => {
     return (
         <div className={'w-full flex justify-between bg-[#373B53] px-10 py-5 rounded-2xl rounded-tl-none rounded-tr-none'}>
-            <Typography tag={'div'} color={'pure-white'} size={'body'}>Amount Due</Typography>
-            <Typography tag={'div'} color={'pure-white'} size={'heading-m'}>
+            <Typography tag={'div'} color={'light-grey'} size={'body'}>Amount Due</Typography>
+            <Typography tag={'div'} color={'light-grey'} size={'heading-m'}>
                 {formatCurrency(invoice.itemList.reduce((acc, item) => acc + item.total, 0))}
             </Typography>
 

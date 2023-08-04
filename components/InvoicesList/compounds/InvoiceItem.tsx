@@ -18,7 +18,7 @@ const InvoiceItem: React.FC<InvoiceProps> = ({invoice}) => {
     return (
         <section>
             {/*Desktop View*/}
-            <div key={invoice.id} className={'hidden tablet:flex w-full min-h-[72px] bg-pure-white my-4 rounded-3xl px-8 gap-8  justify-center items-center'}>
+            <div key={invoice.id} className={'hidden tablet:flex w-full min-h-[72px] bg-pure-white my-4 rounded-3xl px-8 gap-8  justify-center items-center dark:bg-[#1E2139]'}>
                 <DisplayId invoice={invoice} />
                 <DisplayDate invoice={invoice} />
                 <DisplayName invoice={invoice}/>
@@ -28,7 +28,7 @@ const InvoiceItem: React.FC<InvoiceProps> = ({invoice}) => {
             </div>
             
             {/*Mobile View*/}
-            <div key={invoice.id} className={'block tablet:hidden w-full min-h-[72px] bg-pure-white my-4 rounded-3xl px-8 gap-8  justify-center items-center'}>
+            <div key={invoice.id} className={'block tablet:hidden w-full min-h-[72px] bg-pure-white my-4 rounded-3xl px-8 gap-8  justify-center items-center dark:bg-[#1E2139]'}>
                 <Link href={`/${invoice.id}`} >
                     <div className="flex justify-between py-6">
                     <DisplayId invoice={invoice} className={'text-dark-03 text-heading-m'}/>

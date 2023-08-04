@@ -10,12 +10,12 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <React.Fragment>
+        <section className={'bg-white dark:bg-[#141625] transition-colors'}>
             <Navbar/>
 
             <MainContainer>
                 {children}
             </MainContainer>
-        </React.Fragment>
+        </section>
     )
 }

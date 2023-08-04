@@ -1,7 +1,7 @@
 import React, {ComponentProps, ReactComponentElement} from "react";
 import {cn} from "@/lib/utils";
 import Tag, {TagMapping} from "@/components/ui/typography/interfaces/Tag";
-import Color from "@/components/ui/typography/interfaces/Color";
+import Color, {ColorDarkMapper} from "@/components/ui/typography/interfaces/Color";
 import Size from "@/components/ui/typography/interfaces/Size";
 import {twMerge} from "tailwind-merge";
 
@@ -22,7 +22,7 @@ const Typography: React.FC<React.PropsWithChildren<TypographyProps>> = ({
                                                                         }) => {
     
     const textSize = `text-${size}`;
-    const textColor = `text-${color}`
+    const textColor = `text-${color} dark:text-${ColorDarkMapper[color]}`
     return (
         <>
             {React.createElement(TagMapping[tag] || TagMapping.p, {...props, className: `${textSize} ${textColor} ${className ?? ''}`}, children)}

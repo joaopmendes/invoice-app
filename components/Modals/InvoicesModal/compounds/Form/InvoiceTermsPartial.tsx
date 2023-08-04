@@ -35,7 +35,7 @@ const InvoiceTermsPartial: React.FC<InvoiceTermsProps> = ({form}) => {
                                     <Button
                                         variant={"outline"}
                                         className={cn(
-                                            "w-[240px] pl-3 text-left font-normal",
+                                            "w-[240px] pl-3 text-left font-normal dark:border-[#1E2139] dark:bg-dark-01 dark:text-white",
                                             !field.value && "text-muted-foreground"
                                         )}
                                     >
@@ -44,7 +44,7 @@ const InvoiceTermsPartial: React.FC<InvoiceTermsProps> = ({form}) => {
                                         ) : (
                                             <span>Pick a date</span>
                                         )}
-                                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50 z-30" />
+                                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50 z-30 dark:text-white" />
                                     </Button>
                                 </FormControl>
                             </PopoverTrigger>
@@ -57,7 +57,7 @@ const InvoiceTermsPartial: React.FC<InvoiceTermsProps> = ({form}) => {
                                         date < new Date()
                                     }
                                     initialFocus
-                                    className={"bg-pure-white"}
+                                    className={"bg-pure-white dark:border-[#1E2139] dark:bg-dark-01 dark:text-white"}
                                 />
                             </PopoverContent>
                         </Popover>
@@ -79,7 +79,7 @@ const InvoiceTermsPartial: React.FC<InvoiceTermsProps> = ({form}) => {
                                         variant="outline"
                                         role="combobox"
                                         className={cn(
-                                            "w-[200px] justify-between",
+                                            "w-[200px] justify-between dark:border-[#1E2139] dark:bg-dark-01 dark:text-white",
                                             !field.value && "text-muted-foreground"
                                         )}
                                     >
@@ -88,19 +88,20 @@ const InvoiceTermsPartial: React.FC<InvoiceTermsProps> = ({form}) => {
                                                 (paymentTermOption) => paymentTermOption.value === field.value
                                             )?.label
                                             : "Select payment term"}
-                                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50 dark:text-white" />
                                     </Button>
                                 </FormControl>
                             </PopoverTrigger>
-                            <PopoverContent className="w-[200px] p-0 bg-white border-light-grey">
+                            <PopoverContent className="w-[200px] p-0 bg-white dark:border-[#1E2139] dark:bg-dark-01 dark:text-white">
                                 <Command>
-                                    <CommandInput placeholder="Search..." />
+                                    <CommandInput placeholder="Search..." className={'dark:border-[#1E2139] dark:bg-dark-01 dark:text-white'} />
                                     <CommandEmpty>No payment term Found</CommandEmpty>
                                     <CommandGroup>
                                         {paymentTermsOptions.map((paymentTerm) => (
                                             <CommandItem
                                                 value={paymentTerm.label}
                                                 key={paymentTerm.value}
+                                                className={'dark:border-[#1E2139] dark:bg-dark-01 dark:text-white'}
                                                 onSelect={() => {
                                                     form.setValue("paymentTerms", paymentTerm.value)
                                                 }}
