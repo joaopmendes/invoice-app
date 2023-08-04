@@ -5,8 +5,10 @@ type Tag =
     "h4" |
     "h5" |
     "h6" |
-    "p"  |
-    "label"
+    "p" |
+    "div" |
+    "label" |
+    "span"
 
 
 export const TagMapping: Record<Tag, string> = {
@@ -17,10 +19,12 @@ export const TagMapping: Record<Tag, string> = {
     h5: 'h5',
     h6: 'h6',
     p: 'p',
+    div: 'div',
     label: "label",
-    
-}
+    "span": "span"
 
+
+}
 
 
 export default Tag

@@ -1,31 +1,26 @@
-import {makeObservable, observable} from 'mobx'
-
-
-type ModalState = {
-    isOpen: boolean
-}
-
-type Modals = {
-    invoiceModal: ModalState
-}
+import {action, makeObservable, observable} from 'mobx';
 
 export type RootStoreType = {
-    modals: Modals
+    loaders: string[]
 }
 export const initialRootState: RootStoreType = {
-    modals: {
-        invoiceModal: {
-            isOpen: false
-        }
-    }
+    loaders: []
 }
-export class RootStore implements RootStoreType {
-    
-    modals: Modals = initialRootState.modals;
+export class RootStore {
+    state = initialRootState;
     constructor() {
         makeObservable(this, {
-            modals: observable
+            state: observable,
+            addLoader: action,
+            removeLoader: action,
         })
+    }
+    
+    addLoader = (loaderName: string) => {
+        this.state.loaders.push(loaderName);
+    }
+    removeLoader = (loaderName: string) => {    
+        this.state.loaders = this.state.loaders.filter((loader) => loader !== loaderName);
     }
 }
 

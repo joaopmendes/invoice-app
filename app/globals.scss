@@ -16,9 +16,6 @@
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
  
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
- 
     --ring: 0 0% 63.9%;
  
     --radius: 0.5rem;
@@ -33,9 +30,13 @@
     --light-grey: #DFE3FA;
     --dark-grey: #888EB0;
     --red: #EC5757;
-    --light-red: #EC5757;
+    --light-red: #FF9797;
     --white: #F8F8F8;
     --dark: #141625;
+
+
+    --border: --light-grey;
+    --input: --light-grey;
   }
 }
  
@@ -83,7 +84,6 @@
   left: 103px;
 
   width: calc(100% - 103px);
-  height: 100%;
   
   
   @media(max-width: 1440px) {

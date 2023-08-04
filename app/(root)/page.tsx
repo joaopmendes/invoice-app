@@ -1,21 +1,27 @@
-"use client"
-import Typography from "@/components/ui/typography/Typography";
-import {Button} from "@/components/ui/button";
-import {observer} from "mobx-react";
-import rootStore from "@/store/rootStore";
-
-const  Home = () => {
+import Header from "@/components/Header";
+import prisma from '@/lib/prismadb'
+import React from "react";
+import InvoicesList from '@/components/InvoicesList/InvoiceList'
+import {auth} from "@clerk/nextjs";
+import {redirect} from "next/navigation";
+const Home = async () => {
+    const user = auth();
+    
+    if (!user.userId) {
+        redirect("/auth/sign-in");
+    }
+    const invoices = await prisma.invoice.findMany({
+        where: {
+            userId: user.userId
+        }
+    });
+    
     return (
         <>
-            <Typography color={'dark-03'} tag={'h1'} size={'heading-l'}>Invoices</Typography>
-
-            <Button onClick={() => {
-                rootStore.modals.invoiceModal.isOpen = true
-            }}>
-                <Typography color={'dark-03'} tag={'label'} size={'heading-s'}>Open Modal</Typography>
-            </Button>
+            <Header />
+            <InvoicesList invoices={invoices} />
         </>
     )
 }
 
-export default observer(Home)
+export default Home

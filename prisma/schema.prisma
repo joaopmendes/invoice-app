@@ -8,12 +8,48 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Invoice {
-  id        Int     @id @default(autoincrement())
-  title     String
-  userId    String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
+  id          Int      @id @default(autoincrement())
+  displayId   String
+  userId      String
+  
+  // From
+  fromStreetAddress String
+  fromCity          String
+  fromPostalCode    String
+  fromCountry       String
+  
+  // Client
+  clientName        String
+  clientEmail         String
+  
+  clientStreetAddress String
+  clientCity          String
+  clientPostalCode    String
+  clientCountry       String
+  
+  // Invoice
+  invoiceDate         DateTime
+  paymentTerms        Int
+  projectDescription  String
+  
+  itemList            InvoiceItem[]
+  
+}
+
+
+model InvoiceItem {
+  id          Int      @id @default(autoincrement())
+  name        String
+  quantity    Int
+  price       Int
+  total       Int
+
+  invoiceId   Int
+  invoice     Invoice  @relation(fields: [invoiceId], references: [id])
+  
+  @@unique ([invoiceId, name])
 }
