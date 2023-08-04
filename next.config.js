@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    serverActions: true,
-}
+  serverActions: true,
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
