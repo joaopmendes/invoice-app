@@ -1,8 +1,7 @@
-import {auth} from "@clerk/nextjs";
-
+import { auth } from '@clerk/nextjs';
 
 const getUserInfoServer = () => {
-    return auth().user!;
-}
+  return auth().user!;
+};
 
-export default getUserInfoServer
+export default getUserInfoServer;

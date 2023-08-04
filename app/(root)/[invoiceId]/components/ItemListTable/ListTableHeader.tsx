@@ -1,9 +1,5 @@
-import React from "react";
+import React from 'react';
 
-export const ListTableHeader: React.FC<React.PropsWithChildren> = ({children}) => {
-    return (
-        <div className={'hidden tablet:flex'}>
-            {children}
-        </div>
-    );
+export const ListTableHeader: React.FC<React.PropsWithChildren> = ({ children }) => {
+  return <div className={'hidden tablet:flex'}>{children}</div>;
 };

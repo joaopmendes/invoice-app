@@ -1,6 +1,5 @@
+const formatCurrency =  (value: number) => {
+  return new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' }).format(value);
+};
 
-
-export default (value: number) => {
-    return new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' })
-        .format(value)
-}
+export default formatCurrency;
