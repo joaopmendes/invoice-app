@@ -81,7 +81,7 @@ FormItem.displayName = 'FormItem';
 
 const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root & { smaller?: boolean }>
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & { smaller?: boolean }
 >(({ className, smaller, ...props }, ref) => {
   const { error, formItemId } = useFormField();
 
