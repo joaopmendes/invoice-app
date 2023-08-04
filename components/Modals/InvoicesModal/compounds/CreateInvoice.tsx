@@ -57,7 +57,7 @@ const CreateInvoice = () => {
             <Typography size={'heading-m'} color={'dark'} tag={'h2'}>
                 Create Invoice
             </Typography>
-            <div className={'mt-10 h-full'}>
+            <div className={'mt-10 h-full relative'}>
                 {
                     isLoading ? 
                         <div className={'w-full h-[80%] flex justify-center items-center'}>
@@ -83,9 +83,9 @@ const CreateInvoice = () => {
                                     <InvoiceItemList itemListControl={itemListControl} form={form} />
 
                                    
-                                    <div className="flex justify-between w-full gap-3">
+                                    <div className="sticky py-10 bottom-0 left-0 bg-pure-white flex justify-between w-full gap-3">
                                         <div>
-                                            <Button variant={'ghost'} className={'justify-self-start'} type={'button'} onClick={invoicesModalStore.closeInvoicesModal}>
+                                            <Button variant={'ghost'} className={'justify-self-start'} type={'button'} onClick={() => invoicesModalStore.closeInvoicesModal()}>
                                                 <Typography tag={"span"} color={"dark-grey"} size={"heading-s"}>
                                                     Discard
                                                 </Typography>
@@ -102,7 +102,7 @@ const CreateInvoice = () => {
                                     </div>
                                     
                                     
-                                    <div className="h-20 tablet:h-2"></div>
+                                    <div className="h-20 tablet:h-0"></div>
                                 </form>
                             </Form>
                         </>

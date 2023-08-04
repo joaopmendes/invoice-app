@@ -25,7 +25,7 @@ const Typography: React.FC<React.PropsWithChildren<TypographyProps>> = ({
     const textColor = `text-${color}`
     return (
         <>
-            {React.createElement(TagMapping[tag] || TagMapping.p, {...props, className: `${className ?? ''} ${textSize} ${textColor}`}, children)}
+            {React.createElement(TagMapping[tag] || TagMapping.p, {...props, className: `${textSize} ${textColor} ${className ?? ''}`}, children)}
         </>
     );
 };

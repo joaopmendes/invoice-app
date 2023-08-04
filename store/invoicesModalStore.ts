@@ -29,17 +29,20 @@ class InvoicesModalStore {
     }
 
     openCreateInvoice() {
+        window.scrollTo(0,0)
         this.invoiceModal.isOpen = true
         this.invoiceModal.type = "CREATE"
     }
     
     openEditInvoice(invoice: PrismaInvoiceWithItems) {
+        window.scrollTo(0,0)
+        
         this.invoiceModal.isOpen = true
         this.invoiceModal.type = "EDIT"
         this.invoiceModal.initialData = invoice
     }
     closeInvoicesModal() {
-        this.invoiceModal = initialInvoiceModalState;
+        this.invoiceModal = {...initialInvoiceModalState};
     }
 
 }

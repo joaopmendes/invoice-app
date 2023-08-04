@@ -55,7 +55,7 @@ model InvoiceItem {
   total    Int    @default(0)
 
   invoiceId Int
-  invoice   Invoice @relation(fields: [invoiceId], references: [id])
+  invoice   Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
 
   @@unique([invoiceId, name])
 }

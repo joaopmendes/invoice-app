@@ -14,7 +14,6 @@ export const POST = async (req: NextRequest) => {
     if (body["invoiceDate"]) {
         body["invoiceDate"] = new Date(body["invoiceDate"]);
     }
-    debugger;
     let validatorResponse = body["status"] == "draft" 
         ? invoiceSchema
             .deepPartial()
@@ -56,7 +55,7 @@ export const POST = async (req: NextRequest) => {
                             "quantity": item.quantity,
                             "name": item.name,
                             "price": item.price,
-                            "total": item.total,
+                            "total": item.quantity && item.price ? item.quantity * item.price : 0
                         }
                     ))
                 },
@@ -122,7 +121,7 @@ export const PUT = async (req: NextRequest) => {
                                 "quantity": item.quantity,
                                 "name": item.name,
                                 "price": item.price,
-                                "total": item.total,
+                                "total": item.quantity && item.price ? item.quantity * item.price : 0
                             }
                         }
                     )),
@@ -131,7 +130,7 @@ export const PUT = async (req: NextRequest) => {
                             "quantity": item.quantity,
                             "name": item.name,
                             "price": item.price,
-                            "total": item.total,
+                            "total": item.quantity && item.price ? item.quantity * item.price : 0
                         }
                     )),
                 },
@@ -144,6 +143,3 @@ export const PUT = async (req: NextRequest) => {
     }
 
 }
-
-
-

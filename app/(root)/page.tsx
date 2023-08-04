@@ -19,10 +19,10 @@ const Home = async () => {
         }
     });
     return (
-        <>
+        <div className={'min-h-screen h-full'}>
             <Header />
             <InvoicesList invoices={invoices} />
-        </>
+        </div>
     )
 }
 

@@ -8,7 +8,7 @@ interface InvoiceListProps {
 
 const InvoiceList: React.FC<InvoiceListProps> = ({ invoices }) => {
     return (
-        <section id={'invoices-list'} className={'grid grid-cols-1 w-full my-12'}>
+        <section id={'invoices-list'} className={'grid grid-cols-1 w-full py-12'}>
             {invoices.length ? 
                 invoices.map((invoice) => <InvoiceItem key={invoice.id} invoice={invoice} />) 
                 : <InvoiceNoItems />}

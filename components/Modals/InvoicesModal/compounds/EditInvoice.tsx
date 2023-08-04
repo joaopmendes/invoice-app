@@ -47,7 +47,6 @@ const EditInvoice: React.FC<EditInvoiceProps> = ({invoice}) => {
 
     async function onSubmit(data: z.infer<typeof invoiceSchema>) {
         try {
-            invoiceSchema.safeParse(data);
             setIsLoading(true)
             await axios.put('/api/invoices', data)
 
@@ -66,7 +65,7 @@ const EditInvoice: React.FC<EditInvoiceProps> = ({invoice}) => {
             setIsLoading(false)
         }
     }
-
+    console.log(form.formState.errors)
     return (
         <>
             <Typography size={'heading-m'} color={'dark'} tag={'h2'}>
@@ -97,9 +96,9 @@ const EditInvoice: React.FC<EditInvoiceProps> = ({invoice}) => {
 
                                     <InvoiceItemList itemListControl={itemListControl} form={form}/>
 
-                                    <div className="flex justify-end w-full gap-3">
+                                    <div className="sticky py-10 bottom-0 left-0 bg-pure-white flex justify-between w-full gap-3">
 
-                                        <Button variant={'ghost'} className={'justify-self-start'} type={'button'} onClick={invoicesModalStore.closeInvoicesModal}>
+                                        <Button variant={'ghost'} className={'justify-self-start'} type={'button'} onClick={() => invoicesModalStore.closeInvoicesModal()}>
                                             <Typography tag={"span"} color={"dark-grey"} size={"heading-s"}>
                                                 Cancel
                                             </Typography>
@@ -109,7 +108,7 @@ const EditInvoice: React.FC<EditInvoiceProps> = ({invoice}) => {
                                     </div>
 
 
-                                    <div className="h-20 tablet:h-2"></div>
+                                    <div className="h-20 tablet:h-0"></div>
 
                                 </form>
                             </Form>

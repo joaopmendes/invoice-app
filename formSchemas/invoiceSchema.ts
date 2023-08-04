@@ -29,6 +29,6 @@ export default z.object({
         "quantity": z.number(),
         "name": z.string(),
         "price": z.number(),
-        "total": z.number(),
+        "total": z.number().optional(),
     })),
 })
