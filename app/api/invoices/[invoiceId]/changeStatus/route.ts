@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
-import invoiceSchema from '@/formSchemas/invoiceSchema';
+import prisma from '@/lib/prismadb';
 
 export const PUT = async (req: NextRequest, { params }: { params: { invoiceId: string } }) => {
   const body = await req.json();
@@ -32,6 +32,7 @@ export const PUT = async (req: NextRequest, { params }: { params: { invoiceId: s
       data: { ...invoiceResponse },
     });
   } catch (e) {
+    console.error(e)
     return NextResponse.json({ message: 'Something went wrong' }, { status: 500 });
   }
 };
