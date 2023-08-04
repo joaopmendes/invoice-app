@@ -3,7 +3,7 @@ import * as z from 'zod';
 import { UseFieldArrayReturn, UseFormReturn } from 'react-hook-form';
 import Typography from '@/components/ui/typography/Typography';
 import { Button } from '@/components/ui/button';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import InvoiceItem from '@/components/Modals/InvoicesModal/compounds/Form/InvoiceItemList/InvoiceItem';
 import invoiceSchema from '@/formSchemas/invoiceSchema';
@@ -14,19 +14,22 @@ interface InvoiceItemProps {
 }
 
 const InvoiceItemList: React.FC<InvoiceItemProps> = ({ form, itemListControl }) => {
-  useEffect(() => {
-    if (itemListControl.fields.length === 0) {
-      add();
-    }
-  }, []);
-  const add = () => {
+
+  const add = useCallback(() => {
     itemListControl.append({
       quantity: 0,
       name: '',
       price: 0,
       total: 0,
     });
-  };
+  }, [itemListControl]);
+  
+  useEffect(() => {
+    if (itemListControl.fields.length === 0) {
+      add();
+    }
+  }, [add, itemListControl.fields.length]);
+  
 
   function removeItem(index: number) {
     if (itemListControl.fields.length === 1) {
@@ -46,6 +49,7 @@ const InvoiceItemList: React.FC<InvoiceItemProps> = ({ form, itemListControl }) 
         {itemListControl.fields.map((field, index) => {
           return (
             <InvoiceItem
+              key={field.id}
               index={index}
               form={form}
               field={field}

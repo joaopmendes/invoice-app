@@ -3,7 +3,8 @@ import * as z from 'zod';
 import invoiceSchema from '@/formSchemas/invoiceSchema';
 
 const OutputInvoice = invoiceSchema.deepPartial();
-export default (invoice: Invoice & { itemList: InvoiceItem[] }): z.infer<typeof OutputInvoice> => {
+
+const translateInvoiceToFormFields = (invoice: Invoice & { itemList: InvoiceItem[] }): z.infer<typeof OutputInvoice> => {
   return {
     id: invoice.id,
     clientName: invoice.clientName || undefined,
@@ -30,3 +31,5 @@ export default (invoice: Invoice & { itemList: InvoiceItem[] }): z.infer<typeof 
     })),
   };
 };
+
+export default translateInvoiceToFormFields;
