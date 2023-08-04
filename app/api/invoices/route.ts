@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import invoiceSchema from '@/formSchemas/invoiceSchema';
 import { auth } from '@clerk/nextjs';
 import generateRandomInvoiceId from '@/lib/generateRandomInvoiceId';
-
+import prisma from '@/lib/prismadb';
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
   const user = auth();

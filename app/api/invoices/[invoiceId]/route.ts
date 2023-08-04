@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
-import invoiceSchema from '@/formSchemas/invoiceSchema';
+import prisma from '@/lib/prismadb';
 
 export const DELETE = async (req: NextRequest, { params }: { params: { invoiceId: string } }) => {
   const id = Number(params.invoiceId);
