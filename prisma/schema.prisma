@@ -6,40 +6,41 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
 model Invoice {
-  id          Int      @id @default(autoincrement())
-  displayId   String
-  userId      String
-  
+  id        Int    @id @default(autoincrement())
+  displayId String
+  userId    String
+
   // From
-  fromStreetAddress String
-  fromCity          String
-  fromPostalCode    String
-  fromCountry       String
-  
+  fromStreetAddress String @default("")
+  fromCity          String @default("")
+  fromPostalCode    String @default("")
+  fromCountry       String @default("")
+
   // Client
-  clientName        String
-  clientEmail         String
-  
-  clientStreetAddress String
-  clientCity          String
-  clientPostalCode    String
-  clientCountry       String
-  
+  clientName  String @default("")
+  clientEmail String @default("")
+
+  clientStreetAddress String @default("")
+  clientCity          String @default("")
+  clientPostalCode    String @default("")
+  clientCountry       String @default("")
+
   // Invoice
-  invoiceDate         DateTime
-  paymentTerms        Int
-  projectDescription  String
-  
-  itemList            InvoiceItem[]
-  
+  invoiceDate        DateTime @default(now())
+  paymentTerms       Int      @default(0)
+  projectDescription String   @default("")
+
+  itemList InvoiceItem[]
+
   status STATUS @default(PENDING)
 }
+
 enum STATUS {
   DRAFT
   PENDING
@@ -47,14 +48,14 @@ enum STATUS {
 }
 
 model InvoiceItem {
-  id          Int      @id @default(autoincrement())
-  name        String
-  quantity    Int
-  price       Int
-  total       Int
+  id       Int    @id @default(autoincrement())
+  name     String @default("")
+  quantity Int    @default(0)
+  price    Int    @default(0)
+  total    Int    @default(0)
 
-  invoiceId   Int
-  invoice     Invoice  @relation(fields: [invoiceId], references: [id])
-  
-  @@unique ([invoiceId, name])
+  invoiceId Int
+  invoice   Invoice @relation(fields: [invoiceId], references: [id])
+
+  @@unique([invoiceId, name])
 }

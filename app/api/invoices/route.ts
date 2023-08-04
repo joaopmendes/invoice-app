@@ -14,11 +14,17 @@ export const POST = async (req: NextRequest) => {
     if (body["invoiceDate"]) {
         body["invoiceDate"] = new Date(body["invoiceDate"]);
     }
-    const validatorResponse = invoiceSchema.safeParse(body);
+    debugger;
+    let validatorResponse = body["status"] == "draft" 
+        ? invoiceSchema
+            .deepPartial()
+            .safeParse({...body})
+        : invoiceSchema.safeParse(body)
+    
+
     if (!validatorResponse.success) {
         return NextResponse.json({message: "Invalid request", errors: validatorResponse.error.errors}, {status: 400});
     }
-    
     
     const invoice = validatorResponse.data;
 
@@ -28,24 +34,24 @@ export const POST = async (req: NextRequest) => {
             data: {
                 "displayId": generateRandomInvoiceId(),
                 "userId": user.userId,
-                "fromStreetAddress": invoice.fromStreetAddress,
-                "fromCity": invoice.fromCity,
-                "fromPostalCode": invoice.fromPostalCode,
-                "fromCountry": invoice.fromCountry,
-                "status": "PENDING",
-                "clientName": invoice.clientName,
-                "clientEmail": invoice.clientEmail,
-                "clientStreetAddress": invoice.clientStreetAddress,
-                "clientCity": invoice.clientCity,
-                "clientPostalCode": invoice.clientPostalCode,
-                "clientCountry": invoice.clientCountry,
+                "fromStreetAddress": invoice?.fromStreetAddress,
+                "fromCity": invoice?.fromCity,
+                "fromPostalCode": invoice?.fromPostalCode,
+                "fromCountry": invoice?.fromCountry,
+                "status": invoice?.status === "draft" ? "DRAFT" : "PENDING",
+                "clientName": invoice?.clientName,
+                "clientEmail": invoice?.clientEmail,
+                "clientStreetAddress": invoice?.clientStreetAddress,
+                "clientCity": invoice?.clientCity,
+                "clientPostalCode": invoice?.clientPostalCode,
+                "clientCountry": invoice?.clientCountry,
     
-                "invoiceDate": invoice.invoiceDate,
-                "paymentTerms": invoice.paymentTerms,
-                "projectDescription": invoice.projectDescription,
+                "invoiceDate": invoice?.invoiceDate,
+                "paymentTerms": invoice?.paymentTerms,
+                "projectDescription": invoice?.projectDescription,
     
                 "itemList": {
-                    create: invoice.itemList.map(item => (
+                    create: invoice?.itemList?.map(item => (
                         {
                             "quantity": item.quantity,
                             "name": item.name,
@@ -101,7 +107,7 @@ export const PUT = async (req: NextRequest) => {
                 "clientCity": invoice.clientCity,
                 "clientPostalCode": invoice.clientPostalCode,
                 "clientCountry": invoice.clientCountry,
-
+                "status": "PENDING",
                 "invoiceDate": invoice.invoiceDate,
                 "paymentTerms": invoice.paymentTerms,
                 "projectDescription": invoice.projectDescription,

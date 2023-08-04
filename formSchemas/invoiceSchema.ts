@@ -3,6 +3,7 @@ import * as z from "zod";
 export default z.object({
 
     "id": z.number().optional(),
+    "status": z.string().optional(),
     // Bill From Partial
     "fromStreetAddress": z.string(),
     "fromCity": z.string(),

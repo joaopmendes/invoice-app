@@ -13,7 +13,7 @@ import {Button} from "@/components/ui/button";
 import {Form} from "@/components/ui/form";
 import {observer} from "mobx-react";
 import {toast} from "react-toastify";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Loader} from "@/components/Loader";
 import { useRouter} from "next/navigation";
 import invoicesModalStore from "@/store/invoicesModalStore";
@@ -29,6 +29,10 @@ const EditInvoice: React.FC<EditInvoiceProps> = ({invoice}) => {
     const form = useForm<z.infer<typeof invoiceSchema>>({
         resolver: zodResolver(invoiceSchema),
         defaultValues: translateInvoiceToFromFields(invoice),
+        resetOptions: {
+            keepDirtyValues: true, // user-interacted input will be retained
+            keepErrors: true, // input errors will be retained with value update
+        }
     })
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
@@ -40,8 +44,12 @@ const EditInvoice: React.FC<EditInvoiceProps> = ({invoice}) => {
             minLength: 1,
         }
     });
+    useEffect(() => {
+        //form.reset(translateInvoiceToFromFields(invoice))
+    }, [])
     async function onSubmit (data: z.infer<typeof invoiceSchema>) {
         try {
+            invoiceSchema.safeParse(data);
             setIsLoading(true)
             await axios.put('/api/invoices', data)
 

@@ -82,6 +82,9 @@ const CreateInvoice = () => {
 
                                     <InvoiceItemList itemListControl={itemListControl} form={form} />
 
+                                    <Button type="button" onClick={() => {
+                                        onSubmit({...form.getValues(), status: "draft"})
+                                    }}>Save as Draft</Button>
                                     <Button type="submit">Submit</Button>
                                     <div className="h-20 tablet:h-0"></div>
                                     
