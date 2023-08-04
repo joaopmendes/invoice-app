@@ -1,15 +1,15 @@
 import {clsx} from "clsx";
 import {ModalOverlay} from "@/components/ModalOverlay";
 import React from "react";
-import type {Invoice} from "@prisma/client";
 import CreateInvoice from "@/components/Modals/InvoicesModal/compounds/CreateInvoice";
-import {EditInvoice} from "@/components/Modals/InvoicesModal/compounds/EditInvoice";
+import EditInvoice  from "@/components/Modals/InvoicesModal/compounds/EditInvoice";
+import type {PrismaInvoiceWithItems} from "@/interfaces/prisma";
 
 type ModalProps = {
     open: boolean;
     close: () => void
     type: 'CREATE' | 'EDIT'
-    invoice?: Invoice
+    invoice?: PrismaInvoiceWithItems
 }
 export const InvoicesModal: React.FC<ModalProps> = ({ open, close, type, invoice }) => {
     if(!open) return null;

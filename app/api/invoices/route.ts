@@ -32,7 +32,7 @@ export const POST = async (req: NextRequest) => {
                 "fromCity": invoice.fromCity,
                 "fromPostalCode": invoice.fromPostalCode,
                 "fromCountry": invoice.fromCountry,
-    
+                "status": "PENDING",
                 "clientName": invoice.clientName,
                 "clientEmail": invoice.clientEmail,
                 "clientStreetAddress": invoice.clientStreetAddress,
@@ -94,7 +94,7 @@ export const PUT = async (req: NextRequest) => {
                 "fromCity": invoice.fromCity,
                 "fromPostalCode": invoice.fromPostalCode,
                 "fromCountry": invoice.fromCountry,
-
+                    
                 "clientName": invoice.clientName,
                 "clientEmail": invoice.clientEmail,
                 "clientStreetAddress": invoice.clientStreetAddress,

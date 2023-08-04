@@ -13,9 +13,11 @@ const Home = async () => {
     const invoices = await prisma.invoice.findMany({
         where: {
             userId: user.userId
+        },
+        include: {
+            itemList: true
         }
     });
-    
     return (
         <>
             <Header />

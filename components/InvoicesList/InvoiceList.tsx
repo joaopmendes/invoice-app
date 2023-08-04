@@ -1,9 +1,9 @@
-import type { Invoice } from '@prisma/client'
-import {InvoiceItem} from "@/components/InvoicesList/compounds/InvoiceItem";
+import InvoiceItem from "@/components/InvoicesList/compounds/InvoiceItem";
 import InvoiceNoItems from "@/components/InvoicesList/compounds/InvoiceNoItems";
+import {PrismaInvoiceWithItems} from "@/interfaces/prisma";
 
 interface InvoiceListProps {
-    invoices: Invoice[]
+    invoices: PrismaInvoiceWithItems[]
 }
 
 const InvoiceList: React.FC<InvoiceListProps> = ({ invoices }) => {

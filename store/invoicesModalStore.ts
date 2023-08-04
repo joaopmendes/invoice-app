@@ -1,5 +1,5 @@
 import {makeObservable, observable, action} from 'mobx'
-import type {Invoice} from "@prisma/client";
+import type {PrismaInvoiceWithItems} from "@/interfaces/prisma";
 
 
 type InvoiceModalState = {
@@ -9,7 +9,7 @@ type InvoiceModalState = {
 } | {
     isOpen: boolean
     type: 'EDIT'
-    initialData: Invoice
+    initialData: PrismaInvoiceWithItems
 }
 export const initialInvoiceModalState: InvoiceModalState = {
     isOpen: false,
@@ -33,7 +33,7 @@ class InvoicesModalStore {
         this.invoiceModal.type = "CREATE"
     }
     
-    openEditInvoice(invoice: Invoice) {
+    openEditInvoice(invoice: PrismaInvoiceWithItems) {
         this.invoiceModal.isOpen = true
         this.invoiceModal.type = "EDIT"
         this.invoiceModal.initialData = invoice

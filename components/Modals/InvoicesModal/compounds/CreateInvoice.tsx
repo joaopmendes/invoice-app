@@ -12,11 +12,10 @@ import InvoiceItemList from "@/components/Modals/InvoicesModal/compounds/Form/In
 import {Button} from "@/components/ui/button";
 import {Form} from "@/components/ui/form";
 import {observer} from "mobx-react";
-import rootStore from "@/store/rootStore";
 import {toast} from "react-toastify";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {Loader} from "@/components/Loader";
-import {redirect, useRouter} from "next/navigation";
+import { useRouter} from "next/navigation";
 import invoicesModalStore from "@/store/invoicesModalStore";
 
 const CreateInvoice = () => {

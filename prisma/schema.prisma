@@ -38,8 +38,13 @@ model Invoice {
   
   itemList            InvoiceItem[]
   
+  status STATUS @default(PENDING)
 }
-
+enum STATUS {
+  DRAFT
+  PENDING
+  PAID
+}
 
 model InvoiceItem {
   id          Int      @id @default(autoincrement())

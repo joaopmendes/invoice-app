@@ -2,7 +2,7 @@ import * as z from "zod";
 
 export default z.object({
 
-    "id": z.string().optional(),
+    "id": z.number().optional(),
     // Bill From Partial
     "fromStreetAddress": z.string(),
     "fromCity": z.string(),
@@ -24,7 +24,7 @@ export default z.object({
 
     // Item List
     itemList: z.array(z.object({
-        "id": z.string().optional(),
+        "id": z.number().optional(),
         "quantity": z.number(),
         "name": z.string(),
         "price": z.number(),
