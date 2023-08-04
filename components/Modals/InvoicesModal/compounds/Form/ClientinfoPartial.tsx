@@ -22,7 +22,7 @@ const ClientInfoPartial: React.FC<ClientInfoProps> = ({ form }) => {
         name='clientName'
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Client's Name</FormLabel>
+            <FormLabel>Client&apos;s Name</FormLabel>
             <FormControl>
               <Input {...field} />
             </FormControl>
@@ -35,7 +35,7 @@ const ClientInfoPartial: React.FC<ClientInfoProps> = ({ form }) => {
         name='clientEmail'
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Client's Email</FormLabel>
+            <FormLabel>Client&apos; Email</FormLabel>
             <FormControl>
               <Input {...field} />
             </FormControl>

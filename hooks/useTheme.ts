@@ -6,19 +6,20 @@ export const THEMES = {
   light: 'light',
 };
 export default () => {
-  const [currentTheme, setCurrentTheme] = useLocalStorage(
+  const [currentTheme, setCurrentTheme] = useLocalStorage<string | null>(
     'theme',
-    window.matchMedia('(prefers-color-scheme: dark)').matches ? THEMES.dark : THEMES.light,
+    null,
   );
 
+  
   useEffect(() => {
+    if(currentTheme === null) {
+      setCurrentTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? THEMES.dark : THEMES.light);
+    }
+    
     if (currentTheme == THEMES.dark) {
-      console.log('I got called dark');
-
       document.body.classList.add('dark');
     } else {
-      console.log('I got called light');
-
       document.body.classList.remove('dark');
     }
   }, [currentTheme]);
