@@ -6,12 +6,56 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Invoice {
-  id        Int     @id @default(autoincrement())
-  title     String
+  id        Int    @id @default(autoincrement())
+  displayId String
   userId    String
+
+  // From
+  fromStreetAddress String @default("")
+  fromCity          String @default("")
+  fromPostalCode    String @default("")
+  fromCountry       String @default("")
+
+  // Client
+  clientName  String @default("")
+  clientEmail String @default("")
+
+  clientStreetAddress String @default("")
+  clientCity          String @default("")
+  clientPostalCode    String @default("")
+  clientCountry       String @default("")
+
+  // Invoice
+  invoiceDate        DateTime @default(now())
+  paymentTerms       Int      @default(0)
+  projectDescription String   @default("")
+
+  itemList InvoiceItem[]
+
+  status STATUS @default(PENDING)
+}
+
+enum STATUS {
+  DRAFT
+  PENDING
+  PAID
+}
+
+model InvoiceItem {
+  id       Int    @id @default(autoincrement())
+  name     String @default("")
+  quantity Int    @default(0)
+  price    Int    @default(0)
+  total    Int    @default(0)
+
+  invoiceId Int
+  invoice   Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  @@unique([invoiceId, name])
 }

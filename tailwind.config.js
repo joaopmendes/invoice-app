@@ -29,6 +29,11 @@ module.exports = {
         "text-light-red",
         "text-white",
         "text-dark",
+        "text-orange",
+        "text-green",
+        
+        "bg-orange",
+        "bg-green",
 
     ],
     theme: {
@@ -57,7 +62,10 @@ module.exports = {
             "red": "var(--red)",
             "light-red": "var(--light-red)",
             "white": "var(--white)",
+            "pure-white": "#FFFFFF",
             "dark": "var(--dark)",
+            "green": "rgb(var(--green))",
+            "orange": "rgb(var(--orange))",
         },
         extend: {
             borderRadius: {

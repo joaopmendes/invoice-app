@@ -2,7 +2,7 @@ import {useLocalStorage} from "usehooks-ts";
 import {useEffect} from "react";
 
 
-const THEMES = {
+export const THEMES = {
     dark: 'dark',
     light: 'light',
 }
@@ -12,9 +12,13 @@ export default () => {
     
     useEffect(() => {
         if(currentTheme == THEMES.dark) {
-            document.documentElement.classList.add('dark')
+            console.log('I got called dark')
+            
+            document.body.classList.add('dark')
         } else {
-            document.documentElement.classList.remove('dark')
+            console.log('I got called light')
+            
+            document.body.classList.remove('dark')
         }
     }, [currentTheme])
     
@@ -22,6 +26,8 @@ export default () => {
         setCurrentTheme(THEMES.dark)
     }
     const setLightMode = () => {
+
+        console.log("Changing to light mode")
         setCurrentTheme(THEMES.light)
     }
 
