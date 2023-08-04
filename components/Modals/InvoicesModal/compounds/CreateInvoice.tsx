@@ -82,12 +82,27 @@ const CreateInvoice = () => {
 
                                     <InvoiceItemList itemListControl={itemListControl} form={form} />
 
-                                    <Button type="button" onClick={() => {
-                                        onSubmit({...form.getValues(), status: "draft"})
-                                    }}>Save as Draft</Button>
-                                    <Button type="submit">Submit</Button>
-                                    <div className="h-20 tablet:h-0"></div>
+                                   
+                                    <div className="flex justify-between w-full gap-3">
+                                        <div>
+                                            <Button variant={'ghost'} className={'justify-self-start'} type={'button'} onClick={invoicesModalStore.closeInvoicesModal}>
+                                                <Typography tag={"span"} color={"dark-grey"} size={"heading-s"}>
+                                                    Discard
+                                                </Typography>
+                                            </Button>
+                                        </div>
+                                        
+                                        <div className={"flex gap-3"}>
+                                            <Button type="button" variant={'secondary'} className={'px-8'} onClick={() => {
+                                                onSubmit({...form.getValues(), status: "draft"})
+                                            }}>Save as Draft</Button>
+                                            <Button type="submit" className={'px-8'}>Save & Send</Button>
+                                        </div>
+                                        
+                                    </div>
                                     
+                                    
+                                    <div className="h-20 tablet:h-2"></div>
                                 </form>
                             </Form>
                         </>

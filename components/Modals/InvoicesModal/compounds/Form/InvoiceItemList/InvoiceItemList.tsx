@@ -43,7 +43,7 @@ const InvoiceItemList: React.FC<InvoiceItemProps> = ({form, itemListControl}) =>
             Item List
         </Typography>
 
-        <div className="space-y-4 ">
+        <div className="space-y-4">
             {
                 itemListControl.fields.map((field, index) => {
                     return (

@@ -15,7 +15,7 @@ import {observer} from "mobx-react";
 import {toast} from "react-toastify";
 import {useEffect, useState} from "react";
 import {Loader} from "@/components/Loader";
-import { useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 import invoicesModalStore from "@/store/invoicesModalStore";
 import translateInvoiceToFromFields from "@/lib/translateInvoiceToFromFields";
 import type {PrismaInvoiceWithItems} from "@/interfaces/prisma";
@@ -44,10 +44,8 @@ const EditInvoice: React.FC<EditInvoiceProps> = ({invoice}) => {
             minLength: 1,
         }
     });
-    useEffect(() => {
-        //form.reset(translateInvoiceToFromFields(invoice))
-    }, [])
-    async function onSubmit (data: z.infer<typeof invoiceSchema>) {
+
+    async function onSubmit(data: z.infer<typeof invoiceSchema>) {
         try {
             invoiceSchema.safeParse(data);
             setIsLoading(true)
@@ -68,6 +66,7 @@ const EditInvoice: React.FC<EditInvoiceProps> = ({invoice}) => {
             setIsLoading(false)
         }
     }
+
     return (
         <>
             <Typography size={'heading-m'} color={'dark'} tag={'h2'}>
@@ -77,7 +76,7 @@ const EditInvoice: React.FC<EditInvoiceProps> = ({invoice}) => {
                 {
                     isLoading ?
                         <div className={'w-full h-[80%] flex justify-center items-center'}>
-                            <Loader />
+                            <Loader/>
                         </div> :
                         <>
                             <Form {...form}>
@@ -90,16 +89,27 @@ const EditInvoice: React.FC<EditInvoiceProps> = ({invoice}) => {
                                         countryKey: "fromCountry",
                                         streetAddressKey: "fromStreetAddress",
                                         postCodeKey: "fromPostalCode"
-                                    }} />
+                                    }}/>
 
-                                    <ClientInfoPartial form={form} />
+                                    <ClientInfoPartial form={form}/>
 
-                                    <InvoiceTermsPartial form={form} />
+                                    <InvoiceTermsPartial form={form}/>
 
-                                    <InvoiceItemList itemListControl={itemListControl} form={form} />
+                                    <InvoiceItemList itemListControl={itemListControl} form={form}/>
 
-                                    <Button type="submit">Submit</Button>
-                                    <div className="h-20 tablet:h-0"></div>
+                                    <div className="flex justify-end w-full gap-3">
+
+                                        <Button variant={'ghost'} className={'justify-self-start'} type={'button'} onClick={invoicesModalStore.closeInvoicesModal}>
+                                            <Typography tag={"span"} color={"dark-grey"} size={"heading-s"}>
+                                                Cancel
+                                            </Typography>
+                                        </Button>
+                                        <Button type="submit" className={'px-8'}>Save & Send</Button>
+
+                                    </div>
+
+
+                                    <div className="h-20 tablet:h-2"></div>
 
                                 </form>
                             </Form>
