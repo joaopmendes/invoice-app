@@ -22,7 +22,7 @@ export const ItemListTable: React.FC<ItemListTableProps> = ({invoice}) => {
             <ListTableBody>
                 {
                     invoice.itemList.map((item) => (
-                        <ItemListRowItem item={item} ></ItemListRowItem>
+                        <ItemListRowItem key={item.id} item={item} ></ItemListRowItem>
                     ))
                 }
             </ListTableBody>
