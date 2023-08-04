@@ -32,6 +32,7 @@ export const PUT = async (req: NextRequest, { params }: { params: { invoiceId: s
       data: { ...invoiceResponse },
     });
   } catch (e) {
+    console.error(e)
     return NextResponse.json({ message: 'Something went wrong' }, { status: 500 });
   }
 };
