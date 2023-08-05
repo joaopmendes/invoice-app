@@ -85,7 +85,7 @@ const CreateInvoice = () => {
 
                 <InvoiceItemList itemListControl={itemListControl} form={form} />
 
-                <div className='sticky py-10 bottom-0 left-0 bg-pure-white flex justify-between w-full gap-3 bottom-[80px] desktop:bottom-[0px] dark:bg-[#141625]'>
+                <div className='sticky z-30 py-10 bottom-0 left-0 bg-pure-white flex justify-between w-full gap-3 bottom-[80px] desktop:bottom-[0px] dark:bg-[#141625]'>
                   <div>
                     <Button
                       variant={'ghost'}
