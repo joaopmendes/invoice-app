@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import invoiceSchema from '@/formSchemas/invoiceSchema';
-import { auth } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
 import generateRandomInvoiceId from '@/lib/generateRandomInvoiceId';
 import prisma from '@/lib/prismadb';
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
-  const user = auth();
+  const user = await auth();
 
   if (!user.userId) {
     return NextResponse.json({}, { status: 403 });
@@ -70,7 +70,7 @@ export const POST = async (req: NextRequest) => {
 
 export const PUT = async (req: NextRequest) => {
   const body = await req.json();
-  const user = auth();
+  const user = await auth();
 
   if (!user.userId) {
     return NextResponse.json({}, { status: 403 });

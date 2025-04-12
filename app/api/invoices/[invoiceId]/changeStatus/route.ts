@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
 import prisma from '@/lib/prismadb';
 import { STATUSES } from '@/constants/statuses';
 
-export const PUT = async (req: NextRequest, { params }: { params: { invoiceId: string } }) => {
+export const PUT = async (req: NextRequest, props: { params: Promise<{ invoiceId: string }> }) => {
+  const params = await props.params;
   const body = await req.json();
   const id = Number(params.invoiceId);
 
   if (!id) {
     return NextResponse.json({ message: 'Invalid id' }, { status: 400 });
   }
-  const user = auth();
+  const user = await auth();
   if (!user.userId) {
     return NextResponse.json({}, { status: 403 });
   }

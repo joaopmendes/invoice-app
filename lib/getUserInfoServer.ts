@@ -1,7 +1,7 @@
-import { auth } from '@clerk/nextjs';
+import { currentUser } from '@clerk/nextjs/server';
 
-const getUserInfoServer = () => {
-  return auth().user!;
+const getUserInfoServer = async () => {
+  return await currentUser();
 };
 
 export default getUserInfoServer;
