@@ -9,7 +9,7 @@ export default z.object({
   fromPostalCode: z.string(),
   fromCountry: z.string(),
 
-  // Client Partial
+  // Client Partial 
   clientName: z.string(),
   clientEmail: z.string().email(),
   clientStreetAddress: z.string(),
