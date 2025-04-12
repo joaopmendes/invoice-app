@@ -17,6 +17,7 @@ import { useState } from 'react';
 import { Loader } from '@/components/Loader';
 import { useRouter } from 'next/navigation';
 import invoicesModalStore from '@/store/invoicesModalStore';
+import { STATUSES } from '@/constants/statuses';
 
 const CreateInvoice = () => {
   const form = useForm<z.infer<typeof invoiceSchema>>({
@@ -107,7 +108,7 @@ const CreateInvoice = () => {
                   variant={'secondary'}
                   className={'px-8'}
                   onClick={() => {
-                    onSubmit({ ...form.getValues(), status: 'draft' });
+                    onSubmit({ ...form.getValues(), status: STATUSES.DRAFT });
                   }}
                 >
                   Save as Draft
