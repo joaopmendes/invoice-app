@@ -1,8 +1,9 @@
 import * as z from 'zod';
+import { STATUSES } from '@/constants/statuses';
 
 export default z.object({
   id: z.number().optional(),
-  status: z.string().optional(),
+  status: z.enum([STATUSES.DRAFT, STATUSES.PENDING, STATUSES.PAID]).optional(),
   // Bill From Partial
   fromStreetAddress: z.string(),
   fromCity: z.string(),

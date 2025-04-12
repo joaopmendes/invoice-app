@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 import prisma from '@/lib/prismadb';
+import { STATUSES } from '@/constants/statuses';
 
 export const PUT = async (req: NextRequest, { params }: { params: { invoiceId: string } }) => {
   const body = await req.json();
@@ -14,7 +15,7 @@ export const PUT = async (req: NextRequest, { params }: { params: { invoiceId: s
     return NextResponse.json({}, { status: 403 });
   }
 
-  if (!['PENDING', 'PAID', 'DRAFT'].includes(body.status)) {
+  if (!Object.values(STATUSES).includes(body.status)) {
     return NextResponse.json({ message: 'Invalid status' }, { status: 403 });
   }
 

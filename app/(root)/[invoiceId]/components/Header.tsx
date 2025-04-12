@@ -8,6 +8,7 @@ import useInvoiceActions from '@/hooks/useInvoiceActions';
 import { observer } from 'mobx-react';
 import invoicesModalStore from '@/store/invoicesModalStore';
 import rootStore from '@/store/rootStore';
+import { STATUSES } from '@/constants/statuses';
 
 type HeaderProps = {
   invoice: PrismaInvoiceWithItems;
@@ -43,8 +44,8 @@ const Header: React.FC<HeaderProps> = ({ invoice }) => {
         <Button variant={'destruction'} className={'px-6'} onClick={() => actions.delete()}>
           Delete
         </Button>
-        {invoice.status === 'PENDING' && (
-          <Button className={'px-6'} onClick={() => actions.markAsPaid('PAID')}>
+        {invoice.status === STATUSES.PENDING && (
+          <Button className={'px-6'} onClick={() => actions.markAsPaid(STATUSES.PAID)}>
             Mark as Paid
           </Button>
         )}

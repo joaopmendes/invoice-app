@@ -6,9 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Invoice {
@@ -38,13 +37,7 @@ model Invoice {
 
   itemList InvoiceItem[]
 
-  status STATUS @default(PENDING)
-}
-
-enum STATUS {
-  DRAFT
-  PENDING
-  PAID
+  status String @default("PENDING") // Changed from enum to String
 }
 
 model InvoiceItem {

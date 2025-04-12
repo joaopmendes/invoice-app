@@ -16,7 +16,7 @@ export const InvoiceStatus: React.FC<InvoiceStatusProps> = ({ status, className,
       case 'PAID':
         return 'Paid';
       default:
-        return 'Draft';
+        return 'Unknown';
     }
   };
   const getStatusColor = (): Color => {
