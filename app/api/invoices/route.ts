@@ -36,7 +36,7 @@ export const POST = async (req: NextRequest) => {
         fromCity: invoice?.fromCity,
         fromPostalCode: invoice?.fromPostalCode,
         fromCountry: invoice?.fromCountry,
-        status: invoice?.status === 'draft' ? 'DRAFT' : 'PENDING',
+        status: invoice?.status?.toUpperCase() === 'DRAFT' ? 'DRAFT' : 'PENDING',
         clientName: invoice?.clientName,
         clientEmail: invoice?.clientEmail,
         clientStreetAddress: invoice?.clientStreetAddress,
